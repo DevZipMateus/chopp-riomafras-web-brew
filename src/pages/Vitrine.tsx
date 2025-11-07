@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 
 const Vitrine = () => {
-  const [iframeHeight, setIframeHeight] = useState("calc(100vh - 143px)");
+  const [iframeHeight, setIframeHeight] = useState("100vh");
 
   useEffect(() => {
     const calculateHeight = () => {
-      // 80px (header) + 63px (badge do sistema) = 143px
-      const height = window.innerHeight - 80 - 63;
+      // Calcula a altura total disponível menos o header (80px)
+      const height = window.innerHeight - 80;
       setIframeHeight(`${height}px`);
     };
 
@@ -23,13 +23,12 @@ const Vitrine = () => {
       <Header />
 
       {/* Iframe começando logo abaixo do header fixo (80px) */}
-      {/* O badge do MonteSite (63px) que já existe aparecerá automaticamente na parte inferior */}
-      <div className="w-full" style={{ marginTop: "80px" }}>
+      <div className="w-full" style={{ marginTop: "80px", height: `calc(100vh - 80px)` }}>
         <iframe
           src="https://v4.egestor.com.br/vitrine/?s=choppriomafra"
           style={{
             width: "100%",
-            height: iframeHeight,
+            height: "100%",
             border: "none",
             display: "block",
           }}
