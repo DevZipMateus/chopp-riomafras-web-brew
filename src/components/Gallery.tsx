@@ -46,19 +46,19 @@ const Gallery = () => {
   }, [api]);
 
   return (
-    <section id="galeria" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+    <section id="galeria" className="py-12 sm:py-16 md:py-20 bg-background">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-10 sm:mb-12 md:mb-16 animate-fade-in">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
             Nossa galeria
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Confira nossos produtos e serviços
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto animate-fade-in">
+        <div className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl mx-auto animate-fade-in">
           <Carousel
             setApi={setApi}
             opts={{
