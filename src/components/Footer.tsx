@@ -22,11 +22,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Logo e Slogan */}
           <div className="space-y-4">
-            <img 
-              src={logo} 
-              alt="Chopp RioMafra" 
-              className="h-24 w-auto"
-            />
+            <div className="inline-block bg-background rounded-full p-4">
+              <img 
+                src={logo} 
+                alt="Chopp RioMafra" 
+                className="h-24 w-auto"
+              />
+            </div>
             <p className="text-sm text-secondary-foreground/80 leading-relaxed">
               Distribuindo sabores, conectando pessoas e celebrando histórias
             </p>
