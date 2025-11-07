@@ -1,4 +1,5 @@
 import { Heart, Award, Users, TrendingUp } from "lucide-react";
+import aboutCelebration from "@/assets/about-celebration.jpg";
 
 const About = () => {
   return (
@@ -10,6 +11,10 @@ const About = () => {
               Nossa história
             </h2>
             <div className="w-20 h-1 bg-primary mx-auto"></div>
+          </div>
+
+          <div className="mb-12 rounded-lg overflow-hidden shadow-lg animate-fade-in">
+            <img src={aboutCelebration} alt="Pessoas celebrando com chopp" className="w-full h-auto" />
           </div>
 
           <div className="prose prose-lg max-w-none mb-16 text-foreground/90 leading-relaxed animate-fade-in">
