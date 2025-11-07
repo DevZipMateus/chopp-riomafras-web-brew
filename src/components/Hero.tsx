@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Beer } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import heroBg from "@/assets/hero-bg.jpg";
 const Hero = () => {
@@ -39,9 +40,9 @@ const Hero = () => {
             </Button>
             
             <Button asChild variant="outline" size="lg" className="bg-background/80 text-foreground border-primary/60 hover:bg-secondary hover:text-secondary-foreground hover:border-secondary text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6">
-              <a href="#servicos">
-                Ver serviços
-              </a>
+              <Link to="/vitrine">
+                Ver vitrine
+              </Link>
             </Button>
           </div>
 
