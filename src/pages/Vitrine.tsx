@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
+import logo from "@/assets/logo.png";
 
 const Vitrine = () => {
   const [iframeHeight, setIframeHeight] = useState("calc(100vh - 143px)");
@@ -35,6 +36,25 @@ const Vitrine = () => {
           title="Demonstração de Vitrine"
           allowFullScreen
         />
+      </div>
+
+      {/* Badge personalizado fixo na parte inferior */}
+      <div 
+        className="fixed bottom-0 left-0 right-0 bg-secondary border-t border-primary/20 shadow-lg z-50"
+        style={{ height: "63px" }}
+      >
+        <div className="h-full flex items-center justify-center px-4">
+          <div className="flex items-center gap-3">
+            <img 
+              src={logo} 
+              alt="Chopp RioMafra" 
+              className="h-10 w-auto"
+            />
+            <span className="text-sm font-medium text-secondary-foreground">
+              Vitrine Online - Chopp RioMafra
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );
