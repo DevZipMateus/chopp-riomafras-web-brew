@@ -49,8 +49,8 @@ const Gallery = () => {
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto animate-fade-in">
-          <Carousel 
+        <div className="max-w-3xl mx-auto animate-fade-in">
+          <Carousel
             setApi={setApi}
             opts={{
               align: "start",
