@@ -18,7 +18,7 @@ const Hero = () => {
             <img src={logo} alt="Chopp RioMafra" className="h-48 md:h-64 w-auto mx-auto drop-shadow-2xl" />
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-zinc-950 mb-6">
             Chopp RioMafra
           </h1>
           
