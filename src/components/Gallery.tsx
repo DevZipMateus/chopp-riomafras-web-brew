@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -17,14 +17,23 @@ import gallery5 from "@/assets/gallery-5.jpg";
 const Gallery = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
 
-  const images = [
-    gallery1,
-    gallery2,
-    gallery3,
-    gallery4,
-    gallery5,
+  const mediaItems = [
+    { type: "image", src: gallery1 },
+    { type: "video", src: "/chop1.mp4" },
+    { type: "image", src: gallery2 },
+    { type: "image", src: gallery3 },
+    { type: "video", src: "/chop2.mp4" },
+    { type: "image", src: gallery4 },
+    { type: "image", src: gallery5 },
   ];
+
+  const handleVideoEnd = () => {
+    if (api) {
+      api.scrollNext();
+    }
+  };
 
   useEffect(() => {
     if (!api) return;
@@ -59,17 +68,29 @@ const Gallery = () => {
             className="w-full"
           >
             <CarouselContent>
-              {images.map((image, index) => (
+              {mediaItems.map((item, index) => (
                 <CarouselItem key={index}>
                   <div 
-                    className="cursor-pointer rounded-lg overflow-hidden shadow-lg hover:shadow-gold transition-all duration-300"
-                    onClick={() => setSelectedImage(image)}
+                    className="rounded-lg overflow-hidden shadow-lg hover:shadow-gold transition-all duration-300"
                   >
-                    <img 
-                      src={image} 
-                      alt={`Galeria ${index + 1}`}
-                      className="w-full h-auto object-cover"
-                    />
+                    {item.type === "image" ? (
+                      <img 
+                        src={item.src} 
+                        alt={`Galeria ${index + 1}`}
+                        className="w-full h-auto object-cover cursor-pointer"
+                        onClick={() => setSelectedImage(item.src)}
+                      />
+                    ) : (
+                      <video
+                        ref={(el) => (videoRefs.current[`video-${index}`] = el)}
+                        src={item.src}
+                        autoPlay
+                        muted
+                        playsInline
+                        onEnded={handleVideoEnd}
+                        className="w-full h-auto object-cover"
+                      />
+                    )}
                   </div>
                 </CarouselItem>
               ))}
