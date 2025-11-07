@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isVitrinePage = location.pathname === "/vitrine";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,30 +52,47 @@ const Header = () => {
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex items-center gap-4 lg:gap-8">
-            <button
-              onClick={() => scrollToSection("hero")}
-              className="text-foreground hover:text-primary transition-colors font-medium text-sm lg:text-base"
-            >
-              Início
-            </button>
-            <button
-              onClick={() => scrollToSection("sobre")}
-              className="text-foreground hover:text-primary transition-colors font-medium text-sm lg:text-base"
-            >
-              Sobre
-            </button>
-            <button
-              onClick={() => scrollToSection("servicos")}
-              className="text-foreground hover:text-primary transition-colors font-medium text-sm lg:text-base"
-            >
-              Serviços
-            </button>
-            <button
-              onClick={() => scrollToSection("contato")}
-              className="text-foreground hover:text-primary transition-colors font-medium text-sm lg:text-base"
-            >
-              Contato
-            </button>
+            {isVitrinePage ? (
+              <Link
+                to="/"
+                className="text-foreground hover:text-primary transition-colors font-medium text-sm lg:text-base"
+              >
+                Voltar ao Site
+              </Link>
+            ) : (
+              <>
+                <button
+                  onClick={() => scrollToSection("hero")}
+                  className="text-foreground hover:text-primary transition-colors font-medium text-sm lg:text-base"
+                >
+                  Início
+                </button>
+                <button
+                  onClick={() => scrollToSection("sobre")}
+                  className="text-foreground hover:text-primary transition-colors font-medium text-sm lg:text-base"
+                >
+                  Sobre
+                </button>
+                <button
+                  onClick={() => scrollToSection("servicos")}
+                  className="text-foreground hover:text-primary transition-colors font-medium text-sm lg:text-base"
+                >
+                  Serviços
+                </button>
+                <button
+                  onClick={() => scrollToSection("contato")}
+                  className="text-foreground hover:text-primary transition-colors font-medium text-sm lg:text-base"
+                >
+                  Contato
+                </button>
+                <Link
+                  to="/vitrine"
+                  className="text-foreground hover:text-primary transition-colors font-medium text-sm lg:text-base"
+                >
+                  Vitrine
+                </Link>
+              </>
+            )}
             <Button
               asChild
               size="sm"
@@ -102,30 +122,49 @@ const Header = () => {
         {isMobileMenuOpen && (
           <nav className="md:hidden py-4 border-t border-border animate-fade-in">
             <div className="flex flex-col gap-4">
-              <button
-                onClick={() => scrollToSection("hero")}
-                className="text-foreground hover:text-primary transition-colors font-medium text-left"
-              >
-                Início
-              </button>
-              <button
-                onClick={() => scrollToSection("sobre")}
-                className="text-foreground hover:text-primary transition-colors font-medium text-left"
-              >
-                Sobre
-              </button>
-              <button
-                onClick={() => scrollToSection("servicos")}
-                className="text-foreground hover:text-primary transition-colors font-medium text-left"
-              >
-                Serviços
-              </button>
-              <button
-                onClick={() => scrollToSection("contato")}
-                className="text-foreground hover:text-primary transition-colors font-medium text-left"
-              >
-                Contato
-              </button>
+              {isVitrinePage ? (
+                <Link
+                  to="/"
+                  className="text-foreground hover:text-primary transition-colors font-medium text-left"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Voltar ao Site
+                </Link>
+              ) : (
+                <>
+                  <button
+                    onClick={() => scrollToSection("hero")}
+                    className="text-foreground hover:text-primary transition-colors font-medium text-left"
+                  >
+                    Início
+                  </button>
+                  <button
+                    onClick={() => scrollToSection("sobre")}
+                    className="text-foreground hover:text-primary transition-colors font-medium text-left"
+                  >
+                    Sobre
+                  </button>
+                  <button
+                    onClick={() => scrollToSection("servicos")}
+                    className="text-foreground hover:text-primary transition-colors font-medium text-left"
+                  >
+                    Serviços
+                  </button>
+                  <button
+                    onClick={() => scrollToSection("contato")}
+                    className="text-foreground hover:text-primary transition-colors font-medium text-left"
+                  >
+                    Contato
+                  </button>
+                  <Link
+                    to="/vitrine"
+                    className="text-foreground hover:text-primary transition-colors font-medium text-left"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Vitrine
+                  </Link>
+                </>
+              )}
               <Button
                 asChild
                 className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground w-full"
