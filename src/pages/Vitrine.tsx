@@ -18,20 +18,19 @@ const Vitrine = () => {
   }, []);
 
   return (
-    <div className="h-screen overflow-hidden flex flex-col">
-      {/* Header fixo com 80px de altura */}
-      <div className="h-20 flex-shrink-0">
-        <Header />
-      </div>
+    <div className="h-screen overflow-hidden">
+      {/* Header fixo */}
+      <Header />
 
-      {/* Iframe ocupando o espaço restante */}
-      <div className="flex-1 w-full overflow-hidden">
+      {/* Iframe começando logo abaixo do header fixo (80px) */}
+      <div className="w-full" style={{ marginTop: "80px" }}>
         <iframe
           src="https://v4.egestor.com.br/vitrine/?s=choppriomafra"
           style={{
             width: "100%",
             height: iframeHeight,
             border: "none",
+            display: "block",
           }}
           title="Demonstração de Vitrine"
           allowFullScreen
