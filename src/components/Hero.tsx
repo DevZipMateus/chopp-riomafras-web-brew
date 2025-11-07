@@ -1,14 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { Beer } from "lucide-react";
 import logo from "@/assets/logo.png";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
   return (
     <section 
       id="hero" 
-      className="pt-32 pb-20 bg-gradient-hero min-h-screen flex items-center"
+      className="pt-32 pb-20 min-h-screen flex items-center relative overflow-hidden"
     >
-      <div className="container mx-auto px-4">
+      {/* Background Image with Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background/95"></div>
+      </div>
+
+      {/* Content */}
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto animate-fade-in">
           <div className="mb-8">
             <img 
